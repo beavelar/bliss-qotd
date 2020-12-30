@@ -11,8 +11,8 @@
 //   return console.log(`server is listening on ${port}`);
 // });
 
-import Twitter from 'twitter';
 import dotenv from 'dotenv';
+import Twitter from 'twitter';
 
 const env = dotenv.config();
 const config = {

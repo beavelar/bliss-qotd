@@ -1,4 +1,4 @@
 **/dist
-**/config.ts
+**/.env
 **/node_modules
 **/package-lock.json
