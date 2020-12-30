@@ -1,5 +1,5 @@
 # Twitter Bot Implementation
-This directory contains the code implementation for a Twitter bot that provides blissful and positive tweets daily.
+This directory contains the code implementation for the BlissQOTD Twitter bot that provides blissful and positive tweets daily.
 
 Follow the bot on Twitter: [BlissQOTD Bot](https://twitter.com/BlissQOTD)
 
