@@ -12,10 +12,14 @@
 // });
 
 import Twitter from 'twitter';
+import dotenv from 'dotenv';
 
-// TODO: Figure out how this block can be removed
+const env = dotenv.config();
 const config = {
-
+  consumer_key: env.parsed.CONSUMER_KEY,
+  consumer_secret: env.parsed.CONSUMER_SECRET,
+  access_token_key: env.parsed.ACCESS_TOKEN_KEY,
+  access_token_secret: env.parsed.ACCESS_TOKEN_SECRET
 }
 
 const bot = new Twitter(config);
