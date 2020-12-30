@@ -13,30 +13,37 @@
 
 import dotenv from 'dotenv';
 import Twitter from 'twitter';
+import { validEnvironmentKeys } from './environment-keys/environment-keys';
 
-const env = dotenv.config();
-const config = {
-  consumer_key: env.parsed.CONSUMER_KEY,
-  consumer_secret: env.parsed.CONSUMER_SECRET,
-  access_token_key: env.parsed.ACCESS_TOKEN_KEY,
-  access_token_secret: env.parsed.ACCESS_TOKEN_SECRET
-}
+const env = dotenv.config().parsed;
 
-const bot = new Twitter(config);
-
-// Set up your search parameters
-var params = {
-  q: 'd#nodejs',
-  count: 10,
-  result_type: 'recent',
-  lang: 'en'
-}
-
-bot.get('search/tweets', params, (err, data, response) => {
-  if (!err) {
-    console.log('Data', data);
+if (validEnvironmentKeys(env)) {
+  const config = {
+    consumer_key: env.CONSUMER_KEY,
+    consumer_secret: env.CONSUMER_SECRET,
+    access_token_key: env.ACCESS_TOKEN_KEY,
+    access_token_secret: env.ACCESS_TOKEN_SECRET
   }
-  else {
-    console.log(err);
+  
+  const bot = new Twitter(config);
+  
+  // Set up your search parameters
+  var params = {
+    q: 'd#nodejs',
+    count: 10,
+    result_type: 'recent',
+    lang: 'en'
   }
-});
+  
+  bot.get('search/tweets', params, (err, data, response) => {
+    if (!err) {
+      console.log('Data', data);
+    }
+    else {
+      console.log(err);
+    }
+  });
+}
+else {
+  console.error('Unable to start, verify required environment variables are filled');
+}
