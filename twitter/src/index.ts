@@ -29,20 +29,29 @@ if (validEnvironmentKeys(env)) {
     access_token_key: env.ACCESS_TOKEN_KEY,
     access_token_secret: env.ACCESS_TOKEN_SECRET
   }
-  
+
   const bot = new Twitter(config);
+
+  // Generic tweet
+  // TODO: Replace with response for web scraper
   const tweet = {
     status: 'Hello world!'
   };
 
-  bot.post('statuses/update', tweet, (error, data, response) => {
-    if (!error) {
-      console.log(`Successfully tweeted ${tweet}`); // `
+  // Scheduler to post tweets at 7AM, 12PM, and 5PM
+  const interval = setInterval(() => {
+    const date = new Date();
+    if (date.getMinutes() === 0 && (date.getHours() === 7 || date.getHours() === 12 || date.getHours() === 17)) {
+      bot.post('statuses/update', tweet, (error, data, response) => {
+        if (!error) {
+          console.log(`Successfully tweeted ${tweet}`); // `
+        }
+        else {
+          console.error(error);
+        }
+      });
     }
-    else {
-      console.error(error);
-    }
-  });
+  }, 60*1000);
 
   // --------------------------------------------------------------------------------
   // Retrieve tweets
