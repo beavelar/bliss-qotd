@@ -2,6 +2,7 @@ interface EnvironmentKeys {
   CONSUMER_KEY: string,
   CONSUMER_SECRET: string,
   ACCESS_TOKEN_KEY: string,
+  MAX_TWEET_ATTEMPTS: number,
   ACCESS_TOKEN_SECRET: string
 }
 
@@ -11,6 +12,7 @@ export function validEnvironmentKeys(envKeys: any): envKeys is EnvironmentKeys {
       CONSUMER_KEY: 'string',
       CONSUMER_SECRET: 'string',
       ACCESS_TOKEN_KEY: 'string',
+      MAX_TWEET_ATTEMPTS: 'number',
       ACCESS_TOKEN_SECRET: 'string'
     }
 
