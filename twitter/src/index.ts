@@ -48,7 +48,7 @@ if (validEnvironmentKeys(env)) {
   // Scheduler to post tweets at 7AM, 12PM, and 5PM
   const interval = setInterval(() => {
     const date = new Date();
-    if (date.getMinutes() === 0 && (date.getHours() === 7 || date.getHours() === 12 || date.getHours() === 17)) {      
+    if (date.getMinutes() === 0 && (date.getHours() === 7 || date.getHours() === 12 || date.getHours() === 17)) {
       bot.get('statuses/user_timeline', params, (err, data, response) => {
         let currentAttempt = 0;
         let tweetExists = false;
@@ -62,8 +62,8 @@ if (validEnvironmentKeys(env)) {
           }
     
           if (tweetExists) {
-            while (currentAttempt < env.MAX_TWEET_ATTEMPTS) {
-              // TODO: Implement ability to request another tweet
+            while (tweetExists && currentAttempt < env.MAX_TWEET_ATTEMPTS) {
+              // TODO: Implement ability to request and post another tweet
               console.log('Tweet exists, retrieving another Tweet..');
               currentAttempt++;
             }
