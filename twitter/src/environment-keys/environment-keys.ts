@@ -1,6 +1,9 @@
 import Twitter from "twitter";
+import { SearchConfig } from "../twitter-util/Tweet";
 
 interface EnvironmentKeys {
+  TWITTER_HANDLE: string,
+  MAX_TWEET_SEARCH: number,
   MAX_TWEET_ATTEMPTS: number,
   CONSUMER_KEY: string,
   CONSUMER_SECRET: string,
@@ -17,9 +20,18 @@ export function getTwitterConfig(env: EnvironmentKeys): Twitter.AccessTokenOptio
   }
 }
 
+export function getTweetSearchConfig(env: EnvironmentKeys): SearchConfig {
+  return {
+    screen_name: env.TWITTER_HANDLE,
+    count: env.MAX_TWEET_SEARCH
+  }
+}
+
 export function validEnvironmentKeys(envKeys: any): envKeys is EnvironmentKeys {
   if (envKeys) {
     const schema: Record<keyof EnvironmentKeys, string> = {
+      TWITTER_HANDLE: 'string',
+      MAX_TWEET_SEARCH: 'number',
       MAX_TWEET_ATTEMPTS: 'number',
       CONSUMER_KEY: 'string',
       CONSUMER_SECRET: 'string',

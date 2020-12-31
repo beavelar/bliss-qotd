@@ -1,4 +1,4 @@
-import Tweet from "./Tweet";
+import { Tweet } from "./Tweet";
 import Twitter from "twitter";
 
 export function postTweet(bot: Twitter, tweet: Tweet): void {

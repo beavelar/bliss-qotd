@@ -1,7 +1,13 @@
 // import express from 'express';
 import Twitter from 'twitter';
 import { postTweet } from '../twitter-util/twitter-util';
-import { getTwitterConfig, validEnvironmentKeys } from '../environment-keys/environment-keys';
+import { getTweetSearchConfig, getTwitterConfig, validEnvironmentKeys } from '../environment-keys/environment-keys';
+
+// Generic tweet
+// TODO: Replace with response for web scraper
+const tweet = {
+  status: 'Hello wonderful world!'
+};
 
 export function init(env: any): void {
   if (validEnvironmentKeys(env)) {
@@ -13,24 +19,13 @@ export function init(env: any): void {
   
     const config = getTwitterConfig(env);
     const bot = new Twitter(config);
-  
-    // Generic tweet
-    // TODO: Replace with response for web scraper
-    const tweet = {
-      status: 'Hello wonderful world!'
-    };
-  
-    // Set up Tweet search parameters
-    var params = {
-      screen_name: 'BlissQOTD',
-      count: 21
-    }
+    const searchConfig = getTweetSearchConfig(env);
   
     // Scheduler to post tweets at 7AM, 12PM, and 5PM
     const interval = setInterval(() => {
       const date = new Date();
       if (date.getMinutes() === 0 && (date.getHours() === 7 || date.getHours() === 12 || date.getHours() === 17)) {
-        bot.get('statuses/user_timeline', params, (err, data, response) => {
+        bot.get('statuses/user_timeline', searchConfig, (err, data, response) => {
           let currentAttempt = 0;
           let tweetExists = false;
       
