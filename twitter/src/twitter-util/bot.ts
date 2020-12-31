@@ -1,7 +1,7 @@
 // import express from 'express';
 import Twitter from 'twitter';
 import { postTweet } from '../twitter-util/twitter-util';
-import { validEnvironmentKeys } from '../environment-keys/environment-keys';
+import { getTwitterConfig, validEnvironmentKeys } from '../environment-keys/environment-keys';
 
 export function init(env: any): void {
   if (validEnvironmentKeys(env)) {
@@ -11,13 +11,7 @@ export function init(env: any): void {
     //   res.send('The sedulous hyena ate the antelope!');
     // });
   
-    const config = {
-      consumer_key: env.CONSUMER_KEY,
-      consumer_secret: env.CONSUMER_SECRET,
-      access_token_key: env.ACCESS_TOKEN_KEY,
-      access_token_secret: env.ACCESS_TOKEN_SECRET
-    }
-  
+    const config = getTwitterConfig(env);
     const bot = new Twitter(config);
   
     // Generic tweet
