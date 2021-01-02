@@ -6,6 +6,7 @@ export function init(env: any): void {
     const app = express();
   
     app.get('/', (req, res) => {
+      console.log('Received GET request');
       res.send('Hello world!');
     });
 
