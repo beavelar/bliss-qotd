@@ -14,7 +14,7 @@ Follow the bot on Twitter: [BlissQOTD Bot](https://twitter.com/BlissQOTD)
   - [Node.JS Organization Website](https://nodejs.org/en/)
 - Packages
   - Dotenv: [Dotenv Documentation](https://www.npmjs.com/package/dotenv)
-  - Express: [Express Documentation](https://www.npmjs.com/package/express)
+  - Axios: [Axios Documentation](https://www.npmjs.com/package/axios)
   - Twitter: [Twitter Documentation](https://www.npmjs.com/package/twitter)
   - ESLint: [ESLint Documentation](https://www.npmjs.com/package/eslint)
   - Typescript: [Typescript Documentation](https://www.npmjs.com/package/typescript)
