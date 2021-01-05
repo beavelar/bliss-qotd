@@ -1,7 +1,7 @@
 import Twitter from "twitter";
 import { SearchConfig } from "../twitter-util/Tweet";
 
-interface EnvironmentKeys {
+export interface EnvironmentKeys {
   TWITTER_HANDLE: string,
   MAX_TWEET_SEARCH: number,
   MAX_TWEET_ATTEMPTS: number,
