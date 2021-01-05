@@ -5,7 +5,7 @@ export function init(env: any): void {
   if (validEnvironmentKeys(env)) {
     const app = express();
   
-    app.get('/', (req, res) => {
+    app.get('/web-scraper', (req, res) => {
       console.log('Received GET request');
       res.send('Hello world!');
     });
