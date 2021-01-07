@@ -3,6 +3,7 @@ import { SearchConfig } from "../twitter-util/Tweet";
 
 export interface EnvironmentKeys {
   TWITTER_HANDLE: string,
+  TWEET_CHARACTER_LIMIT: number,
   MAX_TWEET_SEARCH: number,
   MAX_TWEET_ATTEMPTS: number,
   WEB_SCRAPER_HOSTNAME: string,
@@ -33,6 +34,7 @@ export function validEnvironmentKeys(envKeys: any): envKeys is EnvironmentKeys {
   if (envKeys) {
     const schema: Record<keyof EnvironmentKeys, string> = {
       TWITTER_HANDLE: 'string',
+      TWEET_CHARACTER_LIMIT: 'number',
       MAX_TWEET_SEARCH: 'number',
       MAX_TWEET_ATTEMPTS: 'number',
       WEB_SCRAPER_HOSTNAME: 'string',

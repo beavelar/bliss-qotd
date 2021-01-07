@@ -8,11 +8,16 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
     let currentAttempt = 0;
     const searchConfig = getTweetSearchConfig(env);
     const previousTweets =  await bot.get('statuses/user_timeline', searchConfig);
+    const webScraperUrl = `http://${env.WEB_SCRAPER_HOSTNAME}:${env.WEB_SCRAPER_PORT}/web-scraper`;
+    const params = {
+      params: {
+        limit: env.TWEET_CHARACTER_LIMIT
+      }
+    };
 
     while (currentAttempt < env.MAX_TWEET_ATTEMPTS) {
       currentAttempt++;
-
-      const scraperResponse = await axios.get(`http://${env.WEB_SCRAPER_HOSTNAME}:${env.WEB_SCRAPER_PORT}/web-scraper`);
+      const scraperResponse = await axios.get(webScraperUrl, params);
       if (validTweet(previousTweets, scraperResponse)) {
         return {
           status: scraperResponse.data
