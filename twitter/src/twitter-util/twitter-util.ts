@@ -8,7 +8,7 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
     let currentAttempt = 0;
     const searchConfig = getTweetSearchConfig(env);
     const previousTweets =  await bot.get('statuses/user_timeline', searchConfig);
-    const webScraperUrl = `http://${env.WEB_SCRAPER_HOSTNAME}:${env.WEB_SCRAPER_PORT}/web-scraper`;
+    const webScraperUrl = `http://${env.WEB_SCRAPER_HOSTNAME}:${env.WEB_SCRAPER_PORT}/web-scraper`; // `
     const params = {
       params: {
         limit: env.TWEET_CHARACTER_LIMIT
@@ -18,7 +18,8 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
     while (currentAttempt < env.MAX_TWEET_ATTEMPTS) {
       currentAttempt++;
       const scraperResponse = await axios.get(webScraperUrl, params);
-      if (validTweet(previousTweets, scraperResponse)) {
+      const tweet = `${scraperResponse.data.quote} -${scraperResponse.data.author}`; // `
+      if (validTweet(previousTweets, tweet)) {
         return {
           status: scraperResponse.data
         }
@@ -54,9 +55,9 @@ export function postTweet(bot: Twitter, tweet: Tweet | undefined): void {
   }
 }
 
-function validTweet(previousTweets: Twitter.ResponseData, scraperResponse: AxiosResponse<any>): boolean {
+function validTweet(previousTweets: Twitter.ResponseData, tweet: string): boolean {
   for (const key of Object.keys(previousTweets)) {
-    if (previousTweets[key].text === scraperResponse.data) {
+    if (previousTweets[key].text === tweet) {
       return false;
     }
   }
