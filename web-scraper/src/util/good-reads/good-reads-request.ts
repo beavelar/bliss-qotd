@@ -5,7 +5,7 @@ import { randomNumber } from "../random/random";
 import { EnvironmentKeys } from "../environment-keys/environment-keys";
 
 // Sends request to good reads web page and returns a quote response
-export async function goodReadsRequest(env: EnvironmentKeys): Promise<Response> {
+export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number): Promise<Response> {
   const randomLink = randomNumber(1);
   const randomPage = randomNumber(99);
   const randomQuote = randomNumber(24);

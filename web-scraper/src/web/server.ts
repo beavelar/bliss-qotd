@@ -7,7 +7,8 @@ export function init(env: any): void {
     const app = express();
   
     app.get('/web-scraper', (req, res) => {
-      request(env).then((response) => {
+      const charLimit = typeof req.query.limit === 'string' ? parseInt(req.query.limit): 0;
+      request(env, charLimit).then((response) => {
         console.log('Received GET request');
         console.log(`Response: ${JSON.stringify(response)}`);
         res.send(response);
