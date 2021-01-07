@@ -1,15 +1,20 @@
 import express from "express";
-import { validEnvironmentKeys } from "../environment-keys/environment-keys";
+import { request } from "./scraper";
+import { validEnvironmentKeys } from "../util/environment-keys/environment-keys";
 
 export function init(env: any): void {
   if (validEnvironmentKeys(env)) {
     const app = express();
   
     app.get('/web-scraper', (req, res) => {
-      const response = 'Hello world!';
-      console.log('Received GET request');
-      console.log(`Response: ${response}`);
-      res.send('Hello world!');
+      request(env).then((response) => {
+        console.log('Received GET request');
+        console.log(`Response: ${JSON.stringify(response)}`);
+        res.send(response);
+      }).catch((error) => {
+        console.error('Error occurred in server.init');
+        console.error(`Error: ${error}`); // `
+      });
     });
 
     app.listen(env.WEB_SCRAPER_PORT, () => {
