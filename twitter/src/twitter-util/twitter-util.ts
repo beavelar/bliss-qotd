@@ -18,10 +18,10 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
     while (currentAttempt < env.MAX_TWEET_ATTEMPTS) {
       currentAttempt++;
       const scraperResponse = await axios.get(webScraperUrl, params);
-      const tweet = `${scraperResponse.data.quote} -${scraperResponse.data.author}`; // `
+      const tweet = `"${scraperResponse.data.quote}" -${scraperResponse.data.author} #BlissQOTD`; // `
       if (validTweet(previousTweets, tweet)) {
         return {
-          status: scraperResponse.data
+          status: tweet
         }
       }
       else {
