@@ -21,9 +21,11 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
     };
 
     try {
+      console.log('-----------------------------------------------------------------------------');
       console.log(`Requesting quote - Attempt ${currentAttempt}`); // `
       console.log(`Link: ${links[randomLink]}`); // `
       console.log(`Page: ${randomPage}`); // `
+      console.log('-----------------------------------------------------------------------------');
 
       // Requests and transforms web request
       const response = await axios.get(links[randomLink], params);
@@ -38,9 +40,11 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
       const author = parseResponse(authorResponse);
       const numOfCharacters = quote.length + author.length;
 
+      console.log('-----------------------------------------------------------------------------');
       console.log('Request completed');
       console.log(`Quote: ${quote}`); // `
       console.log(`Author: ${author}`); // `
+      console.log('-----------------------------------------------------------------------------');
 
       if (charLimit !== 0 && numOfCharacters > charLimit) {
         throw new Error(`Quote response larger than character limit of ${charLimit}`); // `
@@ -52,8 +56,10 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
       };
     }
     catch (error) {
+      console.error('-----------------------------------------------------------------------------');
       console.error('Error caught in good-reads-request.goodReadsRequest');
       console.error(`${error}`); // `
+      console.error('-----------------------------------------------------------------------------');
     }
   }
 }
