@@ -14,7 +14,7 @@ export function init(env: any): void {
         res.send(response);
       }).catch((error) => {
         console.error('Error occurred in server.init');
-        console.error(`Error: ${error}`); // `
+        console.error(`${error}`); // `
         res.send('ERROR');
       });
     });

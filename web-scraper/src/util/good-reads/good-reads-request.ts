@@ -36,10 +36,15 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
       // Parses DOM response
       const quote = parseResponse(quoteResponse);
       const author = parseResponse(authorResponse);
+      const numOfCharacters = quote.length + author.length;
 
       console.log('Request completed');
       console.log(`Quote: ${quote}`); // `
       console.log(`Author: ${author}`); // `
+
+      if (charLimit !== 0 && numOfCharacters > charLimit) {
+        throw new Error(`Quote response larger than character limit of ${charLimit}`); // `
+      }
 
       return {
         quote: quote,
@@ -48,7 +53,7 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
     }
     catch (error) {
       console.error('Error caught in good-reads-request.goodReadsRequest');
-      console.error(`Error: ${error}`); // `
+      console.error(`${error}`); // `
     }
   }
 }

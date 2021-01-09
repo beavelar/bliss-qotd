@@ -15,7 +15,7 @@ export function init(env: any): void {
           postTweet(bot, response);
         }).catch((error) => {
           console.error('Error occurred in bot.init');
-          console.error(`Error: ${error}`);
+          console.error(`${error}`);
         });
       }
     }, 60*1000);

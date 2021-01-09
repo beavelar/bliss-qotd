@@ -35,7 +35,7 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
   }
   catch (error) {
     console.error('Error occured in scraper-util.getResponse');
-    console.error(`Error: ${error}`);
+    console.error(`${error}`);
     throw error;
   }
 }
@@ -49,7 +49,7 @@ export function postTweet(bot: Twitter, tweet: Tweet | undefined): void {
       }
       else {
         console.error('Error occurred in twitter-util.postTweet');
-        console.error(`Error: ${error}`); // `
+        console.error(`${error}`); // `
       }
     });
   }
