@@ -14,13 +14,17 @@ export function init(env: any): void {
         getTweet(env, bot).then((response) => {
           postTweet(bot, response);
         }).catch((error) => {
+          console.error('-----------------------------------------------------------------------------');
           console.error('Error occurred in bot.init');
           console.error(`${error}`);
+          console.error('-----------------------------------------------------------------------------');
         });
       }
     }, 60*1000);
   }
   else {
+    console.error('-----------------------------------------------------------------------------');
     console.error('Unable to start, verify required environment variables are filled');
+    console.error('-----------------------------------------------------------------------------');
   }
 }

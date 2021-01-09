@@ -25,17 +25,23 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
         }
       }
       else {
+        console.log('-----------------------------------------------------------------------------');
         console.log('Tweet already exists, retrieving another Tweet');
         console.log(`Retrieved Tweet: ${scraperResponse.data}`); // `
+        console.log('-----------------------------------------------------------------------------');
       }
     }
 
+    console.log('-----------------------------------------------------------------------------');
     console.log('Max attempts reached, unable to obtain valid Tweet');
+    console.log('-----------------------------------------------------------------------------');
     return undefined;
   }
   catch (error) {
+    console.error('-----------------------------------------------------------------------------');
     console.error('Error occured in scraper-util.getResponse');
     console.error(`${error}`);
+    console.error('-----------------------------------------------------------------------------');
     throw error;
   }
 }
@@ -44,12 +50,16 @@ export function postTweet(bot: Twitter, tweet: Tweet | undefined): void {
   if (tweet) {
     bot.post('statuses/update', tweet, (error, data, response) => {
       if (!error) {
+        console.log('-----------------------------------------------------------------------------');
         console.log('Successfully tweeted!');
         console.log(`Tweet: ${tweet}`); // `
+        console.log('-----------------------------------------------------------------------------');
       }
       else {
+        console.error('-----------------------------------------------------------------------------');
         console.error('Error occurred in twitter-util.postTweet');
         console.error(`${error}`); // `
+        console.error('-----------------------------------------------------------------------------');
       }
     });
   }
