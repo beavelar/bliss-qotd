@@ -1,7 +1,7 @@
 # Twitter Bot Implementation
 This directory contains the code implementation for the **Twitter** side of the **BlissQOTD** Twitter bot.
 
-Follow the bot on Twitter: [BlissQOTD Bot](https://twitter.com/BlissQOTD)
+Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 
 ## Quick Links:
 - [Project Requirements](#project-requirements)
@@ -39,10 +39,10 @@ The following are permission requirements needed by the **BlissQOTD** bot
 - Follow the provided steps from **Twitter** to create a **Twitter** project/application
 - Verify the **App permissions** contains **Read and Write** access
 
-[Read/Write Acess](/images/read-write-access.png)
+  ![Read/Write Acess](/twitter/images/read-write-access.PNG)
 - Retrieve your project/application **Keys and tokens** by clicking the **Keys and tokens** sections
 
-[Keys and tokens](/images/tokens-section.png)
+  ![Keys and tokens](/twitter/images/tokens-section.PNG)
 - In the **.env** file, modify the following fields
   - **TWITTER_HANDLE**=***Bot Twitter handle***
   - **WEB_SCRAPER_HOSTNAME**=***Web-Scraper Hostname***

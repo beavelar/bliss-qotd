@@ -1,7 +1,7 @@
 # Web-Scraper Implementation
 This directory contains the code implementation for the **Web-Scraper** side of the **BlissQOTD** Twitter bot.
 
-Follow the bot on Twitter: [BlissQOTD Bot](https://twitter.com/BlissQOTD)
+Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 
 ## Quick Links:
 - [Project Requirements](#project-requirements)
