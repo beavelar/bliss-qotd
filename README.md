@@ -5,8 +5,8 @@ The goal of the bot is to scrape certain websites and provide blissful and posit
 
 **BlissQOTD** is comprised of two **Node.js** servers. The **twitter** server is the **Twitter** side implementation of the bot. The **web-scraper** server is the web-scraping side implementation of the bot.
 
-Code and documentation for the **twitter** server implementation can be found in the ***twitter*** [readme](/twitter/README.md)
+Code and documentation for the **twitter** server implementation can be found in the [twitter readme](/twitter/README.md)
 
-Code and documentation for the **web-scrapper** server implementation can be found in ***web-scraper*** [readme](/web-scraper/README.md) 
+Code and documentation for the **web-scrapper** server implementation can be found in [web-scraper readme](/web-scraper/README.md) 
 
 Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
