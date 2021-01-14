@@ -4,15 +4,13 @@ This directory contains the code implementation for the **Web-Scraper** side of 
 Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 
 ## Quick Links:
-- [Project Requirements](#project-requirements)
-- [Optional Setup](#optional-setup)
-- [Bot Permission Requirements](#bot-permission-requirements)
-- [Stand-Alone Project Setup](#stand-alone-project-setup)
-- [Docker Setup](#docker-setup)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [Startup](#startup)
 
 ----------------------------------
 
-## Project Requirements
+## Requirements
 - Node.JS
   - [Node.JS Organization Website](https://nodejs.org/en/)
 - Packages
@@ -26,28 +24,15 @@ Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 To install the required packages using the **package.json** file, execute the following command:
 - ***npm install***
 
-## Optional Setup
-- Docker
-  - [Docker Installation Guide](https://docs.docker.com/get-docker/)
-
-## Stand-Alone Project Setup
-- Clone the repository
-- After cloning the repository, you should have a **BlissQOTD** directory, navigate to the ***BlissQOTD/web-scraper*** directory 
+## Setup
+- Navigate to the ***BlissQOTD/web-scraper*** directory
 - Create a **.env** file
   - Use the **.env.template** file as a template
-- In the **.env** file, modify the following fields
+- If opting out of the usage of **Docker**, modify the following field in the **.env** file
   - **WEB_SCRAPER_PORT**=***Web-Scraper Port***
-- Open a command link window of choice
-  - Command Prompt, GitBash, etc.
-- In the ***BlissQOTD/web-scraper*** directory, execute the following command to start up the bot
+
+## Startup
+- Navigate to the ***BlissQOTD/web-scraper*** directory
+- Execute the following command to start up the bot
   - ***npm start***
 - View logs and verify no startup errors appear
-
-## Docker Setup
-- Follow the steps indicated above in [Stand-Alone Project Setup](#stand-alone-project-setup) to get the base project setup
-- Navigate to the project base directory
-- Execute the following command to build the Docker image
-  - ***docker build -t web-scraper .***
-- Execute the following command to run the Docker container
-  - Interactive process: ***docker run -it web-scraper***
-  - Detached from the process: ***docker run -d --rm web-scraper***
