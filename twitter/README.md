@@ -6,7 +6,7 @@ Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 ## Quick Links:
 - [Requirements](#requirements)
 - [Bot Permission Requirements](#bot-permission-requirements)
-- [Setup](#stand-alone-project-setup)
+- [Setup](#setup)
 - [Startup](#startup)
 
 ----------------------------------
