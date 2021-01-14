@@ -1,0 +1,8 @@
+services:
+  web-scraper:
+    build: ./web-scraper
+    ports:
+      - "${WEB_SCRAPER_PORT}:${WEB_SCRAPER_PORT}"
+    environment:
+      - DOCKER_ENV=true
+      - WEB_SCRAPER_PORT=${WEB_SCRAPER_PORT}

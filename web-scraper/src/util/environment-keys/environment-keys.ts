@@ -5,6 +5,12 @@ export interface EnvironmentKeys {
   GOOD_READS_INSPIRATIONAL_LINK: string
 }
 
+export function buildEnvironmentKeys(dotEnvKeys: any): object {
+  const env = dotEnvKeys;
+  env.WEB_SCRAPER_PORT = process.env.WEB_SCRAPER_PORT;
+  return env;
+}
+
 export function validEnvironmentKeys(envKeys: any): envKeys is EnvironmentKeys {
   if (envKeys) {
     const schema: Record<keyof EnvironmentKeys, string> = {
