@@ -5,8 +5,10 @@ Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 
 ## Quick Links:
 - [Project Requirements](#project-requirements)
+- [Optional Setup](#optional-setup)
 - [Bot Permission Requirements](#bot-permission-requirements)
 - [Stand-Alone Project Setup](#stand-alone-project-setup)
+- [Docker Setup](#docker-setup)
 
 ----------------------------------
 
@@ -24,6 +26,10 @@ Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 To install the required packages using the **package.json** file, execute the following command:
 - ***npm install***
 
+## Optional Setup
+- Docker
+  - [Docker Installation Guide](https://docs.docker.com/get-docker/)
+
 ## Stand-Alone Project Setup
 - Clone the repository
 - After cloning the repository, you should have a **BlissQOTD** directory, navigate to the ***BlissQOTD/web-scraper*** directory 
@@ -36,3 +42,12 @@ To install the required packages using the **package.json** file, execute the fo
 - In the ***BlissQOTD/web-scraper*** directory, execute the following command to start up the bot
   - ***npm start***
 - View logs and verify no startup errors appear
+
+## Docker Setup
+- Follow the steps indicated above in [Stand-Alone Project Setup](#stand-alone-project-setup) to get the base project setup
+- Navigate to the project base directory
+- Execute the following command to build the Docker image
+  - ***docker build -t web-scraper .***
+- Execute the following command to run the Docker container
+  - Interactive process: ***docker run -it web-scraper***
+  - Detached from the process: ***docker run -d --rm web-scraper***
