@@ -1,5 +1,5 @@
 import Twitter from "twitter";
-import { SearchConfig } from "../twitter-util/Tweet";
+import { SearchConfig } from "scr/twitter-util/tweet";
 
 export interface EnvironmentKeys {
   TWITTER_HANDLE: string,
