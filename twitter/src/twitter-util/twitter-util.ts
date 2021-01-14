@@ -1,6 +1,6 @@
+import axios from "axios";
 import Twitter from "twitter";
 import { Tweet } from "./Tweet";
-import axios, { AxiosResponse } from "axios";
 import { EnvironmentKeys, getTweetSearchConfig } from "../environment-keys/environment-keys";
 
 export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Tweet | undefined> {

@@ -6,11 +6,16 @@ export function init(env: any): void {
   if (validEnvironmentKeys(env)) {
     const config = getTwitterConfig(env);
     const bot = new Twitter(config);
-
+    console.log('-----------------------------------------------------------------------------');
+    console.log('Starting up Twitter bot interval');
+    console.log('-----------------------------------------------------------------------------');
     // Scheduler to post tweets at 7AM, 12PM, and 5PM
     const interval = setInterval(() => {
       const date = new Date();
       if (date.getMinutes() === 0 && (date.getHours() === 7 || date.getHours() === 12 || date.getHours() === 17)) {
+        console.log('-----------------------------------------------------------------------------');
+        console.log('Target time frame reached, retrieving Tweet');
+        console.log('-----------------------------------------------------------------------------');
         getTweet(env, bot).then((response) => {
           postTweet(bot, response);
         }).catch((error) => {
@@ -21,6 +26,9 @@ export function init(env: any): void {
         });
       }
     }, 60*1000);
+    console.log('-----------------------------------------------------------------------------');
+    console.log('Twitter bot interval started');
+    console.log('-----------------------------------------------------------------------------');
   }
   else {
     console.error('-----------------------------------------------------------------------------');
