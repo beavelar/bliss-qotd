@@ -11,7 +11,7 @@ Follow the bot on [Twitter](https://twitter.com/BlissQOTD)
 
 ----------------------------------
 
-## Project Requirements
+## Requirements
 - Node.JS
   - [Node.JS Organization Website](https://nodejs.org/en/)
 - Packages
@@ -29,7 +29,7 @@ The following are permission requirements needed by the **BlissQOTD** bot
  - Read permissions
  - Write permissions
 
-## Stand-Alone Project Setup
+## Setup
 - Navigate to the ***BlissQOTD/twitter*** directory 
 - Create a **.env** file
   - Use the **.env.template** file as a template
