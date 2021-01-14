@@ -1,4 +1,10 @@
 services:
+  twitter:
+    build: ./twitter
+    environment:
+      - DOCKER_ENV=true
+      - WEB_SCRAPER_HOSTNAME=${WEB_SCRAPER_HOSTNAME}
+      - WEB_SCRAPER_PORT=${WEB_SCRAPER_PORT}
   web-scraper:
     build: ./web-scraper
     ports:

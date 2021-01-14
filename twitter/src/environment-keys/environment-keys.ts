@@ -30,6 +30,13 @@ export function getTweetSearchConfig(env: EnvironmentKeys): SearchConfig {
   }
 }
 
+export function buildEnvironmentKeys(dotEnvKeys: any): object {
+  const env = dotEnvKeys;
+  env.WEB_SCRAPER_HOSTNAME = process.env.WEB_SCRAPER_HOSTNAME;
+  env.WEB_SCRAPER_PORT = process.env.WEB_SCRAPER_PORT;
+  return env;
+}
+
 export function validEnvironmentKeys(envKeys: any): envKeys is EnvironmentKeys {
   if (envKeys) {
     const schema: Record<keyof EnvironmentKeys, string> = {
