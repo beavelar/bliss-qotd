@@ -46,7 +46,7 @@ export function postTweet(bot: Twitter, tweet: Tweet | undefined): void {
     bot.post('statuses/update', tweet, (error, data, response) => {
       if (!error) {
         logger(LevelEnum.LOG, 'Successfully tweeted!');
-        logger(LevelEnum.LOG, `Tweet: ${tweet}`); // `
+        logger(LevelEnum.LOG, `Tweet: ${tweet.status}`); // `
       }
       else {
         logger(LevelEnum.ERROR, 'Error occurred in twitter-util.postTweet', error);
