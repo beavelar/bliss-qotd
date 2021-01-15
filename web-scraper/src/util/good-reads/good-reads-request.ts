@@ -2,6 +2,8 @@ import axios from "axios";
 import cheerio from "cheerio";
 import Response from "../../web-api/Response";
 import { randomNumber } from "../random/random";
+import { logger } from "../logging/logger";
+import { LevelEnum } from "../logging/LevelEnum";
 import { EnvironmentKeys } from "../environment-keys/environment-keys";
 
 // Sends request to good reads web page and returns a quote response
@@ -21,11 +23,9 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
     };
 
     try {
-      console.log('-----------------------------------------------------------------------------');
-      console.log(`Requesting quote - Attempt ${currentAttempt}`); // `
-      console.log(`Link: ${links[randomLink]}`); // `
-      console.log(`Page: ${randomPage}`); // `
-      console.log('-----------------------------------------------------------------------------');
+      logger(LevelEnum.LOG, `Requesting quote - Attempt ${currentAttempt}`); // `
+      logger(LevelEnum.LOG, `Link: ${links[randomLink]}`); // `
+      logger(LevelEnum.LOG, `Page: ${randomPage}`); // `
 
       // Requests and transforms web request
       const response = await axios.get(links[randomLink], params);
@@ -39,13 +39,9 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
       const quote = parseResponse(quoteResponse);
       const author = parseResponse(authorResponse);
       const numOfCharacters = quote.length + author.length;
-
-      console.log('-----------------------------------------------------------------------------');
-      console.log('Request completed');
-      console.log(`Quote: ${quote}`); // `
-      console.log(`Author: ${author}`); // `
-      console.log('-----------------------------------------------------------------------------');
-
+      logger(LevelEnum.LOG, 'Request completed');
+      logger(LevelEnum.LOG, `Quote: ${quote}`); // `
+      logger(LevelEnum.LOG, `Author: ${author}`); // `
       if (charLimit !== 0 && numOfCharacters > charLimit) {
         throw new Error(`Quote response larger than character limit of ${charLimit}`); // `
       }
@@ -56,10 +52,7 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
       };
     }
     catch (error) {
-      console.error('-----------------------------------------------------------------------------');
-      console.error('Error caught in good-reads-request.goodReadsRequest');
-      console.error(`${error}`); // `
-      console.error('-----------------------------------------------------------------------------');
+      logger(LevelEnum.ERROR, 'Error caught in good-reads-request.goodReadsRequest', error);
     }
   }
 }

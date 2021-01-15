@@ -1,5 +1,7 @@
 import Twitter from "twitter";
-import { SearchConfig } from "scr/twitter-util/tweet";
+import { logger } from "../logging/logger";
+import { LevelEnum } from "../logging/LevelEnum";
+import { SearchConfig } from "src/twitter-util/tweet";
 
 export interface EnvironmentKeys {
   TWITTER_HANDLE: string,
@@ -55,7 +57,7 @@ export function validEnvironmentKeys(envKeys: any): envKeys is EnvironmentKeys {
     const missingProperties = Object.keys(schema)
       .filter(key => envKeys[key] === undefined)
       .map(key => key as keyof EnvironmentKeys)
-      .map(key => console.error(`Missing Environment Key: ${key}`)); // `
+      .map(key => logger(LevelEnum.ERROR, `Missing Environment Key: ${key}`)); // `
 
     return missingProperties.length === 0;
   }

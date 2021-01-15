@@ -1,6 +1,8 @@
 import axios from "axios";
 import Twitter from "twitter";
-import { Tweet } from "scr/twitter-util/tweet";
+import { logger } from "../logging/logger";
+import { Tweet } from "src/twitter-util/tweet";
+import { LevelEnum } from "../logging/LevelEnum";
 import { EnvironmentKeys, getTweetSearchConfig } from "../environment-keys/environment-keys";
 
 export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Tweet | undefined> {
@@ -25,23 +27,16 @@ export async function getTweet(env: EnvironmentKeys, bot: Twitter): Promise<Twee
         }
       }
       else {
-        console.log('-----------------------------------------------------------------------------');
-        console.log('Tweet already exists, retrieving another Tweet');
-        console.log(`Retrieved Tweet: ${scraperResponse.data}`); // `
-        console.log('-----------------------------------------------------------------------------');
+        logger(LevelEnum.LOG, 'Tweet already exists, retrieving another Tweet');
+        logger(LevelEnum.LOG, `Retrieved Tweet: ${scraperResponse.data}`); // `
       }
     }
 
-    console.log('-----------------------------------------------------------------------------');
-    console.log('Max attempts reached, unable to obtain valid Tweet');
-    console.log('-----------------------------------------------------------------------------');
+    logger(LevelEnum.LOG, 'Max attempts reached, unable to obtain valid Tweet');
     return undefined;
   }
   catch (error) {
-    console.error('-----------------------------------------------------------------------------');
-    console.error('Error occured in scraper-util.getResponse');
-    console.error(`${error}`);
-    console.error('-----------------------------------------------------------------------------');
+    logger(LevelEnum.ERROR, 'Error occured in scraper-util.getResponse', error);
     throw error;
   }
 }
@@ -50,16 +45,11 @@ export function postTweet(bot: Twitter, tweet: Tweet | undefined): void {
   if (tweet) {
     bot.post('statuses/update', tweet, (error, data, response) => {
       if (!error) {
-        console.log('-----------------------------------------------------------------------------');
-        console.log('Successfully tweeted!');
-        console.log(`Tweet: ${tweet}`); // `
-        console.log('-----------------------------------------------------------------------------');
+        logger(LevelEnum.LOG, 'Successfully tweeted!');
+        logger(LevelEnum.LOG, `Tweet: ${tweet}`); // `
       }
       else {
-        console.error('-----------------------------------------------------------------------------');
-        console.error('Error occurred in twitter-util.postTweet');
-        console.error(`${error}`); // `
-        console.error('-----------------------------------------------------------------------------');
+        logger(LevelEnum.ERROR, 'Error occurred in twitter-util.postTweet', error);
       }
     });
   }
