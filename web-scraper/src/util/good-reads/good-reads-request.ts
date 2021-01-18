@@ -62,7 +62,7 @@ function parseResponse(response: string): string {
   let result = '';
   
   for (const char of response) {
-    if (char === ' ' || char === String.fromCharCode(160) || char.match(/[a-z]/i)) {
+    if (char === ' ' || char === String.fromCharCode(160) || char === '.' || char.match(/[a-z]/i)) {
       result += char;
     }
   }
