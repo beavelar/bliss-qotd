@@ -59,13 +59,8 @@ export async function goodReadsRequest(env: EnvironmentKeys, charLimit: number):
 
 // Removes whitespaces on both ends as well as remove ", ' and \n characters
 function parseResponse(response: string): string {
-  let result = '';
-  
-  for (const char of response) {
-    if (char === ' ' || char === String.fromCharCode(160) || char === '.' || char.match(/[a-z]/i)) {
-      result += char;
-    }
-  }
-
-  return result.trim();
+  let result = response.trim();
+  result = result.replace('\”', '');
+  result = result.replace('\“', '');
+  return result;
 }
